@@ -24,6 +24,13 @@ dampening: 0.0        # dampening for momentum of SGD
 weight_decay: 0.0001  # weight decay
 nesterov: True        # enables Nesterov momentum
 
-path_data: ./datasets/path.txt
+# load pict
+tr_path_data: ./datasets/tr_path.txt
+te_path_data: ./datasets/te_path.txt
+# load pict 2
 data_path: ./datasets
+# load csv
+tr_csv_data: ./csv/tr_path.csv
+te_csv_data: ./csv/te_path.csv
+
 result_path: ./result/cfg1/

@@ -68,3 +68,24 @@ def load_pict2(load_path, transform=None, test=False):
                 img = self.transform(img)
             return img, label
     return MyDataset(load_path, transform=transform, test=test)
+
+# if datas are given in csv format(path / label)
+def load_csv(csv_path, transfrom=None):
+    class MyDataset(Dataset):
+        def __init__(self, csv_path, transform):
+            df = pd.read_csv(csv_path)
+            self.pathlist = df["imgs"]
+            self.labellist = df["labels"]
+            self.transform = transform
+
+        def __len__(self):
+            return len(self.pathlist)
+        
+        def __getitem__(self, idx):
+            img_path = self.pathlist[idx]
+            label = self.labellist[idx]
+            img = Image.open(img_path).convert("RGB")
+            if self.transform:
+                img = self.transform(img)
+            return img, label
+    return MyDataset(csv_path, transform=transform)

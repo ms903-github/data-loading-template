@@ -17,7 +17,7 @@ import torchvision.transforms as transforms
 
 
 from libs.functions import AverageMeter, ProgressMeter, accuracy
-from libs.loader import load_pict, load_pict2
+from libs.loader import load_pict, load_pict2, load_csv
 from libs.models import Classifier_resnet
 # from libs.transformer import MyTransformer
 
@@ -172,12 +172,15 @@ def main():
              ])
 
     # Dataloader
-    # if data are given in txt file format
+    # if datas are given in txt file format
     # train_data = load_pict(CONFIG.tr_path_data, transform=transform)
     # test_data = load_pict(CONFIG.te_path_data, transform=transform)
-    # if data are given in directory format
+    # if datas are given in directory format
     train_data = load_pict2(CONFIG.data_path, transform=transform)
     test_data = load_pict2(CONFIG.data_path, transform=transform, test=True)
+    # if datas are given in csv format
+    # train_data = load_csv(CONFIG.tr_csv_data, transform=transform)
+    # test_data = load_csv(CONFIG.te_csv_data, transform=transform)
 
     train_loader = DataLoader(
         train_data,
