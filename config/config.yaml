@@ -6,13 +6,13 @@ class_weight: False    # if you use class weight to calculate cross entropy or n
 writer_flag: True      # if you use tensorboardx or not
 
 batch_size: 16
-n_classes: 102
+n_classes: 12
 
 width: 224
 height: 224
 
 num_workers: 2
-max_epoch: 50
+max_epoch: 100
 
 optimizer: SGD
 scheduler: onplateau
@@ -30,7 +30,7 @@ te_path_data: ./datasets/te_path.txt
 # load pict 2
 data_path: ./datasets
 # load csv
-tr_csv_data: ./csv/tr_path.csv
-te_csv_data: ./csv/te_path.csv
+tr_csv_data: /home/csv/H290/H290_train.csv
+te_csv_data: /home/csv/H290/H290_test.csv
 
 result_path: ./result/cfg1/

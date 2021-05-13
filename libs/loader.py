@@ -70,12 +70,12 @@ def load_pict2(load_path, transform=None, test=False):
     return MyDataset(load_path, transform=transform, test=test)
 
 # if datas are given in csv format(path / label)
-def load_csv(csv_path, transfrom=None):
+def load_csv(csv_path, transform=None):
     class MyDataset(Dataset):
         def __init__(self, csv_path, transform):
             df = pd.read_csv(csv_path)
-            self.pathlist = df["imgs"]
-            self.labellist = df["labels"]
+            self.pathlist = df["image_path"]
+            self.labellist = df["label"]
             self.transform = transform
 
         def __len__(self):

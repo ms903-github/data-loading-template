@@ -176,11 +176,11 @@ def main():
     # train_data = load_pict(CONFIG.tr_path_data, transform=transform)
     # test_data = load_pict(CONFIG.te_path_data, transform=transform)
     # if datas are given in directory format
-    train_data = load_pict2(CONFIG.data_path, transform=transform)
-    test_data = load_pict2(CONFIG.data_path, transform=transform, test=True)
+    # train_data = load_pict2(CONFIG.data_path, transform=transform)
+    # test_data = load_pict2(CONFIG.data_path, transform=transform, test=True)
     # if datas are given in csv format
-    # train_data = load_csv(CONFIG.tr_csv_data, transform=transform)
-    # test_data = load_csv(CONFIG.te_csv_data, transform=transform)
+    train_data = load_csv(CONFIG.tr_csv_data, transform=transform)
+    test_data = load_csv(CONFIG.te_csv_data, transform=transform)
 
     train_loader = DataLoader(
         train_data,
