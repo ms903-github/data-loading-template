@@ -66,8 +66,8 @@ def train(train_loader, model, criterion, optimizer, epoch, device):
         # measure data loading time
         data_time.update(time.time() - end)
 
-        x = sample[0]
-        t = sample[1]
+        x = sample["image_path"]
+        t = sample["label"]
 
         x = x.to(device)
         t = t.to(device)
@@ -120,8 +120,8 @@ def validate(val_loader, model, criterion, device):
 
     with torch.no_grad():
         for i, sample in enumerate(val_loader):
-            x = sample['img']
-            t = sample['class_id']
+            x = sample['image_path']
+            t = sample['label']
             x = x.to(device)
             t = t.to(device)
 
@@ -298,18 +298,6 @@ def main():
                 model.state_dict(),
                 os.path.join(CONFIG.result_path, 'best_acc1_model.prm')
             )
-
-        # save checkpoint every epoch
-        save_checkpoint(
-            CONFIG.result_path, epoch, model, optimizer, best_acc1, scheduler)
-
-        # save a model every 10 epoch
-        if epoch % 10 == 0 and epoch != 0:
-            save_checkpoint(
-                CONFIG.result_path, epoch, model, optimizer,
-                best_acc1, scheduler, add_epoch2name=True
-            )
-
         
         # write logs to dataframe and csv file
         tmp = pd.Series([
