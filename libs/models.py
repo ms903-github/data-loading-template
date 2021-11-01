@@ -16,7 +16,7 @@ class Classifier_resnet(nn.Module):
         self.relu = nn.ReLU()
     def forward(self, x):
         x = self.resnet(x)
-        x = self.relu(self.fc1(x))
-        x = self.batchnorm(x)
+        x = self.batchnorm(self.fc1(x))
+        x = self.relu(x)
         x = self.relu(self.fc2(x))
         return x
